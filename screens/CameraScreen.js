@@ -4,10 +4,12 @@ import { Camera, CameraType } from 'expo-camera'
 import * as MediaLibrary from 'expo-media-library'
 import { useEffect } from 'react'
 import cameraStyles from '../styles/cameraStyles'
-import { TouchableOpacity } from 'react-native-web'
+import { TouchableOpacity } from 'react-native'
+import { Gesture, GestureDetector } from 'react-native-gesture-handler'
 
 const CameraScreen = ({navigation}) => {
   let [hasPermission, setHasPermission] = useState(null)
+  let [cameraType, setCameraType] = useState(CameraType.back)
 
   useEffect(() => {
     (async () => {
@@ -20,19 +22,21 @@ const CameraScreen = ({navigation}) => {
     navigation.goBack()
   }
 
-
-  let cameraType = CameraType.back
+  let doubleTap = Gesture.Tap().numberOfTaps(2).onStart(() => {
+    console.log('double tap')
+    cameraType === CameraType.back ? setCameraType(CameraType.front) : setCameraType(CameraType.back)
+  })
   return (
     <View style={cameraStyles.cameraScreen}>
       <View>
-        <TouchableOpacity onPresss={navigateBack}>
-          <Text>{"<-Back"}</Text>
+        <TouchableOpacity onPress={navigateBack}>
+          <Text>Back</Text>
         </TouchableOpacity>
       </View>
-      <View style={cameraStyles.cameraBox}>
+      <GestureDetector gesture={doubleTap}>
         <Camera style={cameraStyles.camera} 
                 type={cameraType} />
-      </View>
+      </GestureDetector>
       <View style={cameraStyles.cameraButtonRow}>
         <TouchableOpacity style={cameraStyles.cameraButton} />
       </View>
