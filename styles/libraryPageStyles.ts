@@ -16,8 +16,6 @@ const libraryPageStyles = StyleSheet.create({
     },
     libraryGrid: {
         paddingTop: 10,
-        display: 'grid',
-        gridTemplateColumns: '1fr',
         width: '100%',
     },
     addBookButton: {
@@ -25,7 +23,6 @@ const libraryPageStyles = StyleSheet.create({
         bottom: 0,
         aspectRatio: 1,
         width: '20%',
-        borderRadius: '100%',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',

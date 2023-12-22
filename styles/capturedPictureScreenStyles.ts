@@ -7,7 +7,6 @@ const capturedPictureStyles = StyleSheet.create({
     },
     backButton: {
         height : '100%',
-        display: 'inline'
     },
 });
 

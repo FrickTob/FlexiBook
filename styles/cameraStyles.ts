@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     cameraButton: {
         backgroundColor: 'lightblue',
         height: '100%',
-        borderRadius: '100%',
+        borderRadius: 1/1,
         aspectRatio: 1,
     },
     cameraTouchable: {
